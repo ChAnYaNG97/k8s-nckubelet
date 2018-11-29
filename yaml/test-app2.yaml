@@ -1,0 +1,9 @@
+apiVersion: app.example.com/v1alpha1
+kind: MyApp
+metadata:
+  name: test-app2
+spec:
+  # Add fields here
+  input: "Hello World!"
+  fileURL: "https://github.com/operator-framework/operator-sdk/blob/master/release.sh"
+

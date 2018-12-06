@@ -1,0 +1,12 @@
+NAME apache-tomcat
+VERSION 8.5.35
+GIT 1811 
+MAINTAINER wuheng@iscas.ac.cn
+#CMD linux standrad script, like copy, mv, and so on 
+CMD echo "Hello"
+#ENV 
+DEP java-1.8.0-openjdk net-tools
+#EXPOSE 8080
+WORKDIR /opt/abc
+#START bash ./bin/startup.sh
+#STOP  bash ./bin/shutdown.sh

@@ -1,6 +1,6 @@
-## kube-scheduler
+## Kubernetes Scheduler
 
-kube-scheduler 会从 kube-apiserver 那里获取还没有分配节点的那些 Pod，根据调度策略选择一个合适的节点给 Pod。
+Kubernetes Scheduler 会从 Kubernetes API server 那里获取还没有分配节点的那些 Pod，根据调度策略选择一个合适的节点给 Pod。
 
 ## Configure Multiple Schedulers
 

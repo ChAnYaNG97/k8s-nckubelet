@@ -65,7 +65,9 @@ spec:
 
 自定义的 scheduler 可以用任何语言编写，[官方](https://kubernetes.io/blog/2017/03/advanced-scheduling-in-kubernetes/)给了一个用 Bash 脚本写的 scheduler。在原生的 Kubernetes 中，Pod 是 scheduler 的调度单元，而在我们的场景中，因为需要部署非容器化的应用，所以用 CRD 抽象了一个新的资源类型，需要将这个新资源类型的对象作为调度单元，这个调度流程实际上是根据自定义 scheduler 的调度算法，选定一个 Node，然后将 Node 名称更新到 CRD 对象的状态信息中（更新 nodeName 字段）。
 
-因为 Pod 包含了 binding 这个 subresource，所以在 scheduler 调度 Pod 的过程中，直接通过 binding 对应的 API（http://$SERVER/api/v1/namespaces/default/pods/$PODNAME/binding/），以 POST 方式就可以将 scheduler 选择的 Node 与 Pod 绑定，具体代码可在[这里](https://github.com/wsszh/k8s-nckubelet/blob/master/crd-scheduler/pod-scheduler.sh)查看。
+### Update API Objects in Place Using kubectl patch
+
+因为 Pod 包含了 binding 这个 subresource，所以在 scheduler 调度 Pod 的过程中，直接通过 binding 对应的 API（`http://$SERVER/api/v1/namespaces/default/pods/$PODNAME/binding/`），以 POST 方式就可以将 scheduler 选择的 Node 与 Pod 绑定，具体代码可在[这里](https://github.com/wsszh/k8s-nckubelet/blob/master/crd-scheduler/pod-scheduler.sh)查看。
 
 但是 CRD 没有包含 binding 这个 subresource，我们需要借助 kubectl patch 将 Node 与 CRD 对象绑定。kubectl patch 分为 strategic merge patch 和 JSON merge patch 两种，只有 Kubernetes 原生的资源类型和 Aggregated APIs 支持 strategic merge patch，CRD 目前还不支持，所以我们通过 JSON merge patch 更新 CRD 对象绑定的 Node 信息。
 

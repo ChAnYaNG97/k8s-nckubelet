@@ -1,3 +1,5 @@
+# CRD Scheduler
+
 ## Kubernetes Scheduler
 
 Kubernetes Scheduler 会从 Kubernetes API server 那里获取还没有分配节点的那些 Pod，根据调度策略选择一个合适的节点给 Pod。
@@ -55,7 +57,7 @@ spec:
     image: k8s.gcr.io/pause:2.0
 ```
 
-## CRD Scheduler
+## CRD Scheduler 实现
 
 ### CRD
 

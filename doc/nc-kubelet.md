@@ -16,7 +16,7 @@ kind: CustomResourceDefinition
 metadata:
   name: ncapps.app.example.com
 spec:
-  group: ncapp.example.com
+  group: app.example.com
   names:
     kind: NCApp
     listKind: NCAppList

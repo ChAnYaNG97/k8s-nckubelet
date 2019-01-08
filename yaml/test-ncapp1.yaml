@@ -1,0 +1,7 @@
+apiVersion: app.example.com/v1alpha1
+kind: NCApp
+metadata:
+  name: test-ncapp1
+spec:
+  # Add fields here
+  shellFile: "/usr/local/tomcat/apache-tomcat-8.5.35/bin/startup.sh"
